@@ -6,8 +6,17 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor: '#353535'
     },
+    imagen:{
+        flex:7,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems: 'center',
+        borderColor: '#ffffff',
+        borderBottomWidth: 1,
+        backgroundColor: '#353535'
+    },
     fila:{
-        flex:2,
+        flex:1,
         flexDirection:'row',
         justifyContent: 'center',
         alignItems:'center',
@@ -36,20 +45,23 @@ export class Menu extends React.Component{
     render(){
         return(
         <View style = {styles.contenedor}>
+            <View style = {styles.imagen}>
+                <Image source={require("../images/logo-fitness.jpg")}/>
+            </View>
             <View style = {styles.fila}>  
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 1</Text>
+                    <Text style = {styles.textBoton}>EVOLUCIÓN</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 2</Text>
+                    <Text style = {styles.textBoton}>NUEVO RETO</Text>
                 </TouchableOpacity>
             </View>
             <View style = {styles.fila}>  
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 3</Text>
+                    <Text style = {styles.textBoton}>PERFIL</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 4</Text>
+                    <Text style = {styles.textBoton}>CONTACTAR</Text>
                 </TouchableOpacity>
             </View>
         </View>

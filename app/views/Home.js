@@ -16,11 +16,7 @@ export class Home extends React.Component{
         return(
             <View style = {styles.container}>
                 <View>
-                    <Image source={require("../images/logo-fitness.jpg")}/>
                     <Menu/>
-                </View>
-                <View>
-                    <Text>Zona Clickable</Text>
                 </View>
             </View>
     
