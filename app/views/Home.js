@@ -4,6 +4,9 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-na
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Evolucion from './Evolucion';
+import NuevoReto from './NuevoReto';
+import Contactar from './Contactar';
+import Perfil from './Perfil';
 
 const styles = StyleSheet.create({
     container: {
@@ -54,18 +57,18 @@ export default function Home ({navigation}){
                     <Image source={require("../images/logo-fitness.jpg")}/>
                 </View>
                     <View style = {styles.fila}>  
-                        <TouchableOpacity style = {styles.boton} onPress= {()=> navigation.navigate("Evolucion")}>
-                            <Text style = {styles.textBoton}>EVOLUCIÓN 2</Text>
+                        <TouchableOpacity style = {styles.boton} onPress = {()=> navigation.navigate("Evolucion")}>
+                            <Text style = {styles.textBoton}>EVOLUCIÓN</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style = {styles.boton} onPress ={()=> Alert.alert("Has apretado Nuevo Reto")}>
+                        <TouchableOpacity style = {styles.boton} onPress = {()=> navigation.navigate("NuevoReto")}>
                             <Text style = {styles.textBoton}>NUEVO RETO</Text>
                         </TouchableOpacity>
                     </View>
                     <View style = {styles.fila}>  
-                        <TouchableOpacity style = {styles.boton} onPress ={()=>Alert.alert("Has apretado Perfil")}>
+                        <TouchableOpacity style = {styles.boton} onPress = {()=> navigation.navigate("Perfil")}>
                             <Text style = {styles.textBoton}>PERFIL</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style = {styles.boton} onPress ={()=>Alert.alert("Has apretado Contactar")}>
+                        <TouchableOpacity style = {styles.boton} onPress = {()=> navigation.navigate("Contactar")}>
                             <Text style = {styles.textBoton}>CONTACTAR</Text>
                         </TouchableOpacity>
                     </View>
