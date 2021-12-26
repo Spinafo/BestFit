@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { Menu } from '../widgets/Menu';
+import { render } from 'react-dom';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Evolucion from './Evolucion';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,19 +12,66 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    imagen:{
+        flex:5,
+        width: '100%',
+        height: '100%',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems: 'center',
+        borderColor: '#ffffff',
+        backgroundColor: '#353535'
+    },
+    fila:{
+        flex:1,
+        width:'100%',
+        height:'100%',
+        flexDirection:'row',
+        justifyContent: 'center',
+        alignItems:'center',
+        borderBottomWidth: 1,
+        backgroundColor: '#353535'
+    },
+    boton: {
+        width:'50%',
+        height:'50%',
+        backgroundColor:'#353535',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    textBoton:{
+        color:'#ffffff',
+        fontSize:15
+    }
   });
 
-export class Home extends React.Component{
-    render(){
+
+export default function Home ({navigation}){
+
         return(
             <View style = {styles.container}>
-                <View>
-                    <Menu/>
+                <View style = {styles.imagen}>
+                    <Image source={require("../images/logo-fitness.jpg")}/>
                 </View>
+                    <View style = {styles.fila}>  
+                        <TouchableOpacity style = {styles.boton} onPress= {()=> navigation.navigate("Evolucion")}>
+                            <Text style = {styles.textBoton}>EVOLUCIÓN 2</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style = {styles.boton} onPress ={()=> Alert.alert("Has apretado Nuevo Reto")}>
+                            <Text style = {styles.textBoton}>NUEVO RETO</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style = {styles.fila}>  
+                        <TouchableOpacity style = {styles.boton} onPress ={()=>Alert.alert("Has apretado Perfil")}>
+                            <Text style = {styles.textBoton}>PERFIL</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style = {styles.boton} onPress ={()=>Alert.alert("Has apretado Contactar")}>
+                            <Text style = {styles.textBoton}>CONTACTAR</Text>
+                        </TouchableOpacity>
+                    </View>
             </View>
     
-        )
-    }
+        );
 }
 
 
