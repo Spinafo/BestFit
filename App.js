@@ -40,8 +40,9 @@ const App = () => {
               headerRight: () => (
                 <Button
                   onPress={() => alert('Home')}
-                  title="Info"
-                  color="#fff"
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
                 />),
               }}/>
         <Stack.Screen name="Contactar" component={Contactar}
@@ -54,6 +55,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
         <Stack.Screen name="NuevoReto" component={NuevoReto}
             options={{
@@ -65,6 +73,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
         <Stack.Screen name="Perfil" component={Perfil}
             options={{
@@ -76,6 +91,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
       </Stack.Navigator>
     </NavigationContainer>
