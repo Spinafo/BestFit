@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     imagen:{
-        flex:5,
+        flex:6,
         width: '100%',
         height: '100%',
         flexDirection:'row',
@@ -33,12 +33,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems:'center',
         borderBottomWidth: 1,
-        backgroundColor: '#353535'
+        backgroundColor: '#154360'
     },
     boton: {
         width:'50%',
-        height:'50%',
-        backgroundColor:'#353535',
+        height:'100%',
+        marginLeft:2,
+        backgroundColor:'#1A5276',
         justifyContent:'center',
         alignItems:'center'
     },
