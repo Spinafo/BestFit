@@ -1,5 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { Evolucion } from '../views/Evolucion';
+import { Home } from '../views/Home';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const styles = StyleSheet.create({
     contenedor: {
@@ -7,7 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#353535'
     },
     fila:{
-        flex:2,
+        flex:1,
         flexDirection:'row',
         justifyContent: 'center',
         alignItems:'center',
@@ -27,6 +31,12 @@ const styles = StyleSheet.create({
     }
 });
 
+function EvolucionScreen({ navigation }) {
+    return (
+          <Evolucion/>
+    );
+  }
+
 export class Menu extends React.Component{
 
     viewMsg = ()=>{
@@ -37,19 +47,19 @@ export class Menu extends React.Component{
         return(
         <View style = {styles.contenedor}>
             <View style = {styles.fila}>  
-                <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 1</Text>
+                <TouchableOpacity style = {styles.boton} onPress= {()=> navigation.navigate("Evolucion")}>
+                    <Text style = {styles.textBoton}>EVOLUCIÓN 2</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 2</Text>
+                    <Text style = {styles.textBoton}>NUEVO RETO</Text>
                 </TouchableOpacity>
             </View>
             <View style = {styles.fila}>  
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 3</Text>
+                    <Text style = {styles.textBoton}>PERFIL</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>BOTON 4</Text>
+                    <Text style = {styles.textBoton}>CONTACTAR</Text>
                 </TouchableOpacity>
             </View>
         </View>
