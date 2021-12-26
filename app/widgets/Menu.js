@@ -4,6 +4,10 @@ import { Evolucion } from '../views/Evolucion';
 import { Home } from '../views/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { db } from '../config/db';
+ 
+
+let sitios = [];
 
 const styles = StyleSheet.create({
     contenedor: {
@@ -31,24 +35,33 @@ const styles = StyleSheet.create({
     }
 });
 
-function EvolucionScreen({ navigation }) {
-    return (
-          <Evolucion/>
-    );
-  }
 
 export class Menu extends React.Component{
 
+    constructor(props){
+        super(props);
+    }
+
     viewMsg = ()=>{
         Alert.alert ("Has apretado un botón");
+    }
+
+    componentDidMount(){
+        db.collection("sitios").get().then((querySnapshot)=>{
+            querySnapshot.forEach((doc) => {
+                sitios.push(doc.data());
+                console.log(sitios);
+                console.log(doc.data().categoria);
+            });
+        });
     }
 
     render(){
         return(
         <View style = {styles.contenedor}>
             <View style = {styles.fila}>  
-                <TouchableOpacity style = {styles.boton} onPress= {()=> navigation.navigate("Evolucion")}>
-                    <Text style = {styles.textBoton}>EVOLUCIÓN 2</Text>
+                <TouchableOpacity style = {styles.boton} onPress= {this.viewMsg}>
+                    <Text style = {styles.textBoton}>EVOLUCIÓN 3</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
                     <Text style = {styles.textBoton}>NUEVO RETO</Text>
