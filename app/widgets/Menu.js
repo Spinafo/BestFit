@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert, TouchableOpacity, FlatList } from 'react-native';
 import { Evolucion } from '../views/Evolucion';
 import { Home } from '../views/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { db } from '../config/db';
+import { collection, getDocs } from 'firebase/firestore';
  
 
 let sitios = [];
@@ -38,6 +39,11 @@ const styles = StyleSheet.create({
 
 export class Menu extends React.Component{
 
+    state = {
+        sitios: [],
+        loading:true
+    }
+
     constructor(props){
         super(props);
     }
@@ -47,35 +53,48 @@ export class Menu extends React.Component{
     }
 
     componentDidMount(){
-        db.collection("sitios").get().then((querySnapshot)=>{
-            querySnapshot.forEach((doc) => {
-                sitios.push(doc.data());
-                console.log(sitios);
-                console.log(doc.data().categoria);
-            });
-        });
+        const getData = async () => {
+            try{
+                const querySnapshot = await getDocs(collection(db, "BestFit"));
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log (doc.id, " => ", doc.data());
+                    this.sitios=doc.data();
+                    console.log ("Nombre: ", this.sitios.nombre);
+                    console.log ("Tiempo: ", this.sitios.tiempo);
+                });
+            } catch (error) {
+                console.log("Error : ", error);
+            }
+            };
+            getData();
     }
 
-    render(){
-        return(
-        <View style = {styles.contenedor}>
-            <View style = {styles.fila}>  
-                <TouchableOpacity style = {styles.boton} onPress= {this.viewMsg}>
-                    <Text style = {styles.textBoton}>EVOLUCIÓN 3</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>NUEVO RETO</Text>
-                </TouchableOpacity>
-            </View>
-            <View style = {styles.fila}>  
-                <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>PERFIL</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style = {styles.boton} onPress ={this.viewMsg}>
-                    <Text style = {styles.textBoton}>CONTACTAR</Text>
-                </TouchableOpacity>
-            </View>
+    renderItem = data =>
+        <View style={style.fila}>
+            <TouchableOpacity style={styles.boton} onPress={() => this.viewMsg(data)}>
+                <Text style={styles.textBoton}>{data.item.value.detalle}</Text>
+            </TouchableOpacity>
         </View>
-        )
+
+    render(){
+
+        if (this.state.loading) {
+            return(
+                <View style={styles.contenedor}>
+                    <Text>Cargando</Text>
+                </View>
+            )
+        } else {
+            return(
+                <View style={styles.contenedor}>
+                    <FlatList
+                    data={this.state.sitios}
+                    renderItem={item => this.renderItem(item)}
+                    keyExtractor= {(item, index) => item.key}
+                    />
+                </View>
+            )
+        }
     }
 }
