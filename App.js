@@ -6,6 +6,7 @@ import Evolucion from './app/views/Evolucion';
 import Contactar from './app/views/Contactar';
 import NuevoReto from './app/views/NuevoReto';
 import Perfil from './app/views/Perfil';
+import { Menu } from './app/widgets/Menu';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -19,6 +20,17 @@ const App = () => {
         <Stack.Screen name="Home" component={Home}
             options={{
               title: 'Home',
+              headerStyle: {
+              backgroundColor: '#154360',
+              },
+              headerTintColor: '#ffffff',
+              headerTitleStyle: {
+              fontWeight: 'bold',
+              },
+              }}/>
+        <Stack.Screen name="Menu" component={Menu}
+            options={{
+              title: 'Menu',
               headerStyle: {
               backgroundColor: '#154360',
               },

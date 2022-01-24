@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Menu } from '../widgets/Menu';
 
 
 
@@ -48,7 +49,7 @@ export default function Evolucion ({navigation}){
         return(
             <View style = {styles.container}>
                 <View style = {styles.contenido}>
-                    <Text>Pantalla Evolucion</Text>
+                    <Menu/>
                 </View>
                 <View style = {styles.fila}>  
                         <TouchableOpacity style = {styles.boton} onPress = {()=> navigation.navigate("NuevoReto")}>
