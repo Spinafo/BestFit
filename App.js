@@ -6,6 +6,7 @@ import Evolucion from './app/views/Evolucion';
 import Contactar from './app/views/Contactar';
 import NuevoReto from './app/views/NuevoReto';
 import Perfil from './app/views/Perfil';
+import { Menu } from './app/widgets/Menu';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -27,6 +28,17 @@ const App = () => {
               fontWeight: 'bold',
               },
               }}/>
+        <Stack.Screen name="Menu" component={Menu}
+            options={{
+              title: 'Menu',
+              headerStyle: {
+              backgroundColor: '#154360',
+              },
+              headerTintColor: '#ffffff',
+              headerTitleStyle: {
+              fontWeight: 'bold',
+              },
+              }}/>
         <Stack.Screen name="Evolucion" component={Evolucion}
             options={{
               title: 'Evolucion',
@@ -40,8 +52,9 @@ const App = () => {
               headerRight: () => (
                 <Button
                   onPress={() => alert('Home')}
-                  title="Info"
-                  color="#fff"
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
                 />),
               }}/>
         <Stack.Screen name="Contactar" component={Contactar}
@@ -54,6 +67,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
         <Stack.Screen name="NuevoReto" component={NuevoReto}
             options={{
@@ -65,6 +85,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
         <Stack.Screen name="Perfil" component={Perfil}
             options={{
@@ -76,6 +103,13 @@ const App = () => {
               headerTitleStyle: {
               fontWeight: 'bold',
               },
+              headerRight: () => (
+                <Button
+                  onPress={() => alert('Home')}
+                  title="Home"
+                  color="#ffffff"
+                  backgroundColor="#1B262C"
+                />),
               }}/>
       </Stack.Navigator>
     </NavigationContainer>

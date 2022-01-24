@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { Menu } from '../widgets/Menu';
+
 
 
 
